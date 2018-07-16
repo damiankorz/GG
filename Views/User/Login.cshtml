@@ -1,0 +1,27 @@
+@model UserLogin
+@{
+    Layout = null;
+}
+<link rel="stylesheet" href="~/css/styles.css">
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="~/js/script.js"></script>
+<link rel="stylesheet" href="~/css/styles.css">
+<div class="logreg_div">
+    <div class="logreg_header">
+        <img src="~/images/logo.png" alt="Logo" height=50 width=50>
+        <h1>Login</h1>
+    </div>
+    <p style="color: grey; font-style: italic; margin-top: 0px;">"Login and begin matchmaking!"</p>
+    <div asp-validation-summary="All"></div>
+    <form asp-action="LoginProcess" asp-controller="User" method="post">
+        <input asp-for="LoginEmail" placeholder="Email">
+        <input asp-for="LoginPassword" placeholder="Password">
+        <button>Login</button>
+    </form>
+    <a class="links" href="/register">Don't have an account? Click here to register</a>
+</div>
+
+

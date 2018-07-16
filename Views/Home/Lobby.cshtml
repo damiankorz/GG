@@ -1,0 +1,43 @@
+@model LobbyModel
+<div class="lobby_container">
+    <h1>@Model.Lobby.LobbyName.ToUpper()</h1>
+    <h5>@Model.Lobby.GameTitle | @Model.Lobby.Platform | @Model.Lobby.NumPlayers Remaining Openings</h5>
+    <h5>@Model.Lobby.StartDate.ToString("D") &#64; @Model.Lobby.StartTime.ToString("t")</h5>
+    <p style="margin-bottom: 35px;">@Model.Lobby.Description - @Model.Lobby.User.Username</p>
+    @if(Model.User.ID == Model.Lobby.UserID)
+    {
+        <a class="button_links" href="/lobbies/@Model.Lobby.ID">Remove</a>
+    }
+</div>
+@if(Model.Lobby.Attendees.Where(a => a.UserID == Model.User.ID).SingleOrDefault() == null && @Model.Lobby.UserID != Model.User.ID)
+{
+    <div class="lobby_container">
+        <h1>JOIN LOBBY</h1>
+        <p>Please enter your gamertag so the host may find and invite you on console.</p>
+        <div asp-validation-summary="All"></div>
+        <form asp-action="Join" asp-controller="Home" method="post">
+            <input asp-for="@Model.Attendee.Gamertag" placeholder="Gamertag">
+            <button>Join</button>
+        </form>
+    </div>
+}
+ <div class="lobby_container">
+    <h1>ROSTER</h1>
+    @if(Model.Lobby.Attendees.Count < 1)
+    {
+        <p>Empty roster</p>
+    }
+    else 
+    {
+        <ul style="margin-bottom: 35px;">
+        @foreach(var person in Model.Lobby.Attendees)
+        {
+            <li>@person.Gamertag</li>
+        }
+        </ul>
+    }
+    @if(Model.Lobby.Attendees.Where(a => a.UserID == Model.User.ID).SingleOrDefault() != null && @Model.Lobby.UserID != Model.User.ID)
+    {
+        <a class="button_links" href="/lobbies/@Model.Lobby.ID/leave">Leave</a>
+    }
+</div>

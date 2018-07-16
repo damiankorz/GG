@@ -1,0 +1,68 @@
+@model HomeModel
+<div style="display: inline-block; vertical-align: top; margin-left: 15px;">
+    <h1 class="main_h1">Welcome @Model.User.Username</h1>
+    <h4 style="margin-left: 15px; color: white;">Hosting Lobbies: @Model.HostingLobbies.Count | Participating Lobbies: @Model.ParticipatingLobbies.Count</h4>
+</div>
+<h2>Hosting Lobbies</h2>
+<table>
+    <tr>
+        <th>Lobby Name</th>
+        <th>Game Title</th>
+        <th>Platform</th>
+        <th>Players Needed</th>
+        <th>Time</th>
+        <th>Actions</th>
+    </tr>
+    @foreach(var lobby in Model.HostingLobbies)
+    {
+        @if(lobby.StartDate >= @DateTime.Today)
+        {
+            <tr>
+                <td><a style="color: white;" class="links" href="/lobbies/@lobby.ID">@lobby.LobbyName</a></td>
+                <td>@lobby.GameTitle</td>
+                <td>@lobby.Platform</td>
+                <td>@lobby.NumPlayers</td>
+                <td>@lobby.StartDate.ToString("d") &#64; @lobby.StartTime.ToString("t")</td>
+                @if(@lobby.UserID == @Model.User.ID)
+                {
+                    <td><a style="color: white;" class="links" href="/lobbies/@lobby.ID/delete">Remove</a></td>
+                }
+            </tr>
+        }
+    }
+</table>
+@if(Model.HostingLobbies.Count < 1)
+{
+    <p class="null_data_p">No lobbies created</p>
+}
+<a class="button_links" href="/matchmaking">Create Lobby</a>
+<h2>Participating Lobbies</h2>
+<table>
+    <tr>
+        <th>Lobby Name</th>
+        <th>Game Title</th>
+        <th>Platform</th>
+        <th>Players Needed</th>
+        <th>Time</th>
+        <th>Actions</th>
+    </tr>
+    @foreach(var lobby in Model.ParticipatingLobbies)
+    {
+        @if(lobby.Lobby.StartDate >= @DateTime.Today)
+        {
+            <tr> 
+                <td><a style="color: white;" class="links" href="/lobbies/@lobby.Lobby.ID">@lobby.Lobby.LobbyName</a></td>
+                <td>@lobby.Lobby.GameTitle</td>
+                <td>@lobby.Lobby.Platform</td>
+                <td>@lobby.Lobby.NumPlayers</td>
+                <td>@lobby.Lobby.StartDate.ToString("d") &#64; @lobby.Lobby.StartTime.ToString("t")</td>
+                <td><a style="color: white;" class="links" href="/lobbies/@lobby.Lobby.ID/leave">Leave</a></td>
+            </tr>
+        }
+    }
+</table>
+@if(Model.ParticipatingLobbies.Count < 1)
+{
+    <p class="null_data_p">No lobbies joined</p>
+}
+<a class="button_links" href="/lobbies">Find Lobby</a>

@@ -1,0 +1,30 @@
+@model Lobby
+<h1 class="main_h1">MATCHMAKING</h1>
+<div asp-validation-summary="All"></div>
+<div id="lobby_form_wrapper">
+    <h1 style="font-size: 20pt;">Create New Lobby</h1>
+    <form asp-action="New" asp-controller="Home" method="post">
+        <input asp-for="LobbyName" placeholder="Lobby Name">
+        <input asp-for="GameTitle" placeholder="Game Title">
+        <label asp-for="Platform">Platform:</label>
+        <select asp-for="Platform">
+            <option>Playstation 3</option>
+            <option>Playstation 4</option>
+            <option>Xbox 360</option>
+            <option>Xbox One</option>
+        </select>
+        <label style="margin-left: 50px;" asp-for="NumPlayers">Players Needed:</label>
+        <select style="width: 100px;" asp-for="NumPlayers">
+            @for(int i = 1; i <16; i++)
+            {
+                <option>@i</option>
+            }
+        </select>
+        <label asp-for="StartDate">Start Date:</label>
+        <label style="margin-left: 171px;" asp-for="StartTime">Start Time:</label>
+        <input type="date" asp-for="StartDate">
+        <input type="time" asp-for="StartTime">
+        <textarea asp-for="Description" cols="60" rows="5" placeholder="Description"></textarea>
+        <button>Initialize Lobby</button>
+    </form>
+</div>

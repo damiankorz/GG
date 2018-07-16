@@ -1,0 +1,11 @@
+/Users/damiank/Desktop/GG/bin/Debug/netcoreapp2.0/GG.deps.json
+/Users/damiank/Desktop/GG/bin/Debug/netcoreapp2.0/GG.runtimeconfig.json
+/Users/damiank/Desktop/GG/bin/Debug/netcoreapp2.0/GG.runtimeconfig.dev.json
+/Users/damiank/Desktop/GG/bin/Debug/netcoreapp2.0/GG.dll
+/Users/damiank/Desktop/GG/bin/Debug/netcoreapp2.0/GG.pdb
+/Users/damiank/Desktop/GG/obj/Debug/netcoreapp2.0/GG.csprojResolveAssemblyReference.cache
+/Users/damiank/Desktop/GG/obj/Debug/netcoreapp2.0/GG.csproj.CoreCompileInputs.cache
+/Users/damiank/Desktop/GG/obj/Debug/netcoreapp2.0/GG.AssemblyInfoInputs.cache
+/Users/damiank/Desktop/GG/obj/Debug/netcoreapp2.0/GG.AssemblyInfo.cs
+/Users/damiank/Desktop/GG/obj/Debug/netcoreapp2.0/GG.dll
+/Users/damiank/Desktop/GG/obj/Debug/netcoreapp2.0/GG.pdb

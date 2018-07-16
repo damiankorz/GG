@@ -1,0 +1,74 @@
+@model LobbiesModel
+<h2>Playstation Lobbies</h2>
+<table>
+    <tr>
+        <th>Lobby Name</th>
+        <th>Game Title</th>
+        <th>Platform</th>
+        <th>Players Needed</th>
+        <th>Time</th>
+        <th>Actions</th>
+    </tr>
+    @foreach(var lobby in Model.PlaystationLobbies)
+    {
+        @if(lobby.StartDate >= @DateTime.Today)
+        {
+        <tr>
+            <td><a style="color: white;" class="links" href="/lobbies/@lobby.ID">@lobby.LobbyName</a></td>
+            <td>@lobby.GameTitle</td>
+            <td>@lobby.Platform</td>
+            <td>@lobby.NumPlayers</td>
+            <td>@lobby.StartDate.ToString("d") &#64; @lobby.StartTime.ToString("t")</td>
+            @if(lobby.Attendees.Where(a => a.UserID == Model.User.ID).SingleOrDefault() == null && lobby.UserID != @Model.User.ID)
+            {
+                <td><a style="color: white;" class="links" href="/lobbies/@lobby.ID">Join</a></td>
+            }
+            @if(lobby.Attendees.Where(a => a.UserID == Model.User.ID).SingleOrDefault() != null && lobby.UserID != @Model.User.ID)
+            {
+                <td><a style="color: white;" class="links" href="/lobbies/@lobby.ID/leave">Leave</a></td>
+            }
+        </tr>
+        }
+    }
+</table>
+@if(Model.PlaystationLobbies.Count < 1)
+{
+    <p class="null_data_p">No Playstation lobbies created by other users</p>
+}
+<h2>Xbox Lobbies</h2>
+<table>
+    <tr>
+        <th>Lobby Name</th>
+        <th>Game Title</th>
+        <th>Platform</th>
+        <th>Players Needed</th>
+        <th>Time</th>
+        <th>Actions</th>
+    </tr>
+    @foreach(var lobby in Model.XboxLobbies)
+    {
+        @if(lobby.StartDate >= @DateTime.Today)
+        {
+        <tr>
+            <td><a style="color: white;" class="links" href="/lobbies/@lobby.ID">@lobby.LobbyName</a></td>
+            <td>@lobby.GameTitle</td>
+            <td>@lobby.Platform</td>
+            <td>@lobby.NumPlayers</td>
+            <td>@lobby.StartDate.ToString("d") &#64; @lobby.StartTime.ToString("t")</td>
+            @if(lobby.Attendees.Where(a => a.UserID == Model.User.ID).SingleOrDefault() == null && lobby.UserID != @Model.User.ID)
+            {
+                <td><a style="color: white;" class="links" href="/lobbies/@lobby.ID">Join</a></td>
+            }
+            @if(lobby.Attendees.Where(a => a.UserID == Model.User.ID).SingleOrDefault() != null && lobby.UserID != @Model.User.ID)
+            {
+                <td><a style="color: white;" class="links" href="/lobbies/@lobby.ID/leave">Leave</a></td>
+            }
+        </tr>
+        }
+    }
+</table>
+@if(Model.XboxLobbies.Count < 1)
+{
+    <p class="null_data_p">No Xbox lobbies created by other users</p>
+}
+<a class="button_links" href="/matchmaking">Create Lobby</a>

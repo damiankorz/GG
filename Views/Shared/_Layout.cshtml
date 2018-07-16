@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GG</title>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src="~/js/script.js"></script>
+    <link rel="stylesheet" href="~/css/styles.css">
+</head>
+<body class="body">
+    <nav>
+        <img src="~/images/logo.png" alt="Logo" height=100 width=100>
+            <a class="nav_links" href="/home">Home</a>
+            <a class="nav_links" href="/matchmaking">Matchmaking</a>
+            <a class="nav_links" href="/lobbies">Lobbies</a>
+            <a class="nav_links" href="/logout">Logout</a>
+        <img src="~/images/xbox.png" alt="Xbox Logo" height=50 width=50>
+        <img src="~/images/ps4.png" alt="Xbox Logo" height=50 width=50>
+    </nav>
+    <div class="container body-content" style="vertical-align: top; padding: 25px; margin-left: 175px;">
+        @RenderBody()
+    </div>
+</body>
+</html>

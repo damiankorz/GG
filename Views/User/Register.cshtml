@@ -1,0 +1,28 @@
+@model UserRegister
+@{
+    Layout = null;
+}
+<link rel="stylesheet" href="~/css/styles.css">
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="~/js/script.js"></script>
+<link rel="stylesheet" href="~/css/styles.css">
+<div class="logreg_div">
+    <div class="logreg_header">
+        <img src="~/images/logo.png" alt="Logo" height=50 width=50>
+        <h1>Register</h1>
+    </div>
+    <p style="color: grey; font-style: italic; margin-top: 0px;">"Register to begin matchmaking with other users!"</p>
+    <div asp-validation-summary="All"></div>
+    <form asp-action="RegisterProcess" asp-controller="User" method="post">
+        <input asp-for="Username" placeholder="Username">
+        <input asp-for="Email" placeholder="Email">
+        <input asp-for="Password" placeholder="Password">
+        <input asp-for="ConfirmPassword" placeholder="Confirm Password">
+        <button>Register</button>
+    </form>
+    <a class="links" href="/login">Already registered? Click here to login</a>
+</div>
+
